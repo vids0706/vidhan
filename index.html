@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Recommendations</title>
+    <style>
+        /* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #fff8e1; /* Light yellow, food-related */
+    background-size: cover; /* Ensures the image covers the entire page */
+    background-position: center; /* Ensures the image is centered */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    color: #4e4e4e;
+    padding: 20px;
+    font-size: 16px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #f68f1f; /* Orange color, reminds of food */
+    font-family: 'Georgia', serif;
+}
+
+/* Form Styling */
+form {
+    background-color: #ffebcc; /* Soft cream background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #4e4e4e;
+    text-align: center;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 80%;
+    border: 2px solid #f68f1f;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #f5a623; /* Slightly darker orange on focus */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #f68f1f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #f5a623;
+}
+
+/* Food Recommendations List */
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 30px;
+    color: #f68f1f;
+    font-family: 'Georgia', serif;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+li {
+    background-color: #fff5e1; /* Light peach background */
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 5px solid #f68f1f;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+li:hover {
+    transform: translateY(-5px);
+}
+
+li:nth-child(even) {
+    background-color: #ffe1a6; /* Slightly lighter peach */
+}
+
+/* Footer Section */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #4e4e4e;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Food Recommendation Based on Mood</h1>
+
+    <form action="/" method="POST">
+        <label for="mood">Enter your mood:</label>
+        <input type="text" id="mood" name="mood" required>
+        <button type="submit">Get Recommendations</button>
+    </form>
+
+    {% if food_recommendations %}
+        <h2>Food Recommendations:</h2>
+        <ul>
+        {% for food in food_recommendations %}
+            <li>{{ food }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
